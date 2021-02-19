@@ -2,11 +2,15 @@
   <div>
     <Renderer :data="data" />
     <Editor
+      ref="editor"
       :path="path"
       :data="data"
       :components="components"
       @change="onChange"
+      @replace="onReplace"
+      @set-path="setPath"
     />
+    <button @click="addElement">+</button>
   </div>
 </template>
 
@@ -26,15 +30,25 @@ export default {
   },
   computed: {
     data() {
-      return this.$store.state.data
+      return this.$store.state.data.toJS()
     },
   },
   methods: {
     onChange({ path, data }) {
       this.$store.commit(
         'setData',
-        this.data.set(path, fromJS(data))
+        this.$store.state.data.set(path, fromJS(data))
       )
+    },
+    onReplace({ path, data }) {
+      this.$store.commit('setData', fromJS(data))
+      this.path = path
+    },
+    setPath(path) {
+      this.path = path
+    },
+    addElement() {
+      this.$refs.editor.addComponent('Text')
     },
   },
   components: {

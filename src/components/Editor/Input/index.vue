@@ -1,10 +1,4 @@
 <script lang="js">
-import inputs from '../inputs'
-
-const inputComponents = Object.values(inputs).reduce((o, { component }) => ({
-  ...o, [component.name]: component,
-}), {})
-
 export default {
   functional: true,
   props: [
@@ -21,10 +15,10 @@ export default {
       componentData,
     } = props
 
-    const inputDefinition = inputs[input.type]
+    const inputDefinition = input.type;
 
     return h(
-      inputDefinition.component.name,
+      inputDefinition.component,
       {
         props: {
           ...input.inputOptions,
@@ -48,9 +42,6 @@ export default {
       []
     )
   },
-  components: {
-    ...inputComponents,
-  }
 }
 </script>
 

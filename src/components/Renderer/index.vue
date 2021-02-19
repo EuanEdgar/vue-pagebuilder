@@ -1,15 +1,10 @@
 <template>
-  <pre>{{ formattedData }}</pre>
+  <pre>{{ data }}</pre>
 </template>
 
 <script lang="js">
 export default {
   props: ['data'],
-  computed: {
-    formattedData() {
-      return this.data.toJS()
-    }
-  }
 }
 </script>
 
