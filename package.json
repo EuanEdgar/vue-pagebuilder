@@ -9,11 +9,13 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start": "yarn serve --port 3000"
   },
   "main": "index.js",
   "dependencies": {
     "core-js": "^3.6.5",
+    "immutable": "^4.0.0-rc.12",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
