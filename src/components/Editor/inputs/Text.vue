@@ -8,6 +8,7 @@
 <script lang="js">
 export default {
   name: 'TextInput',
+  initialValue: '',
   props: ['_key', 'data'],
   methods: {
     onChange(event) {

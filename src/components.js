@@ -18,4 +18,24 @@ export default [
     // TODO
     render: null
   },
+  {
+    name: 'Header',
+    inputs: [
+      {
+        type: 'select',
+        key: 'headerType',
+        initialValue: 1,
+        inputOptions: {
+          options: [1, 2, 3, 4, 5, 6].map((n) => ({
+            value: n,
+            text: `H${n}`,
+          })),
+        },
+      },
+      {
+        type: 'text',
+        key: 'text',
+      },
+    ],
+  },
 ]

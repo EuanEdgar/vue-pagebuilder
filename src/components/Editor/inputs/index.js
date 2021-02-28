@@ -1,15 +1,24 @@
 import Vue from 'vue'
 
+import Select from './Select'
 import Text from './Text'
 
-const register = (component) => {
-  Vue.component(component.name, component)
-  return component
+const createComponent = (component) => {
+  const {
+    name,
+    initialValue,
+  } = component
+
+  Vue.component(name, component)
+
+  return {
+    name,
+    component,
+    initialValue,
+  }
 }
 
 export default {
-  text: {
-    initialValue: '',
-    component: register(Text),
-  },
+  select: createComponent(Select),
+  text: createComponent(Text),
 }

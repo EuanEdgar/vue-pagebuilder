@@ -1,6 +1,14 @@
 <template>
   <div>
-    <Renderer :data="data" />
+    <label>
+      <input type="checkbox" v-model="editting" />
+      Editting
+    </label>
+    <Renderer
+      :data="data"
+      :editting="editting"
+      @selected="setPath"
+    />
     <Editor
       ref="editor"
       :path="path"
@@ -26,6 +34,7 @@ export default {
     return {
       components,
       path: 0,
+      editting: false,
     };
   },
   computed: {

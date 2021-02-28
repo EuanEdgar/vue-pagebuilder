@@ -1,5 +1,11 @@
 <template>
-  <pre>{{ data }}</pre>
+  <div>
+    <pre
+      v-for="(datum, index) in data"
+      :key="index"
+      @click="$emit('selected', index)"
+    >{{ datum }}</pre>
+  </div>
 </template>
 
 <script lang="js">
