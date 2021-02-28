@@ -7,9 +7,10 @@ const createComponent = (component) => {
   const {
     name,
     initialValue,
+    ...vueComponent
   } = component
 
-  Vue.component(name, component)
+  Vue.component(name, vueComponent)
 
   return {
     name,
