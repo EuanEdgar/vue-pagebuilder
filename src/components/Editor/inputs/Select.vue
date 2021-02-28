@@ -2,7 +2,7 @@
   <div>
     <h2>{{ _key }}</h2>
     <select
-      :value="data"
+      :value="selectValue"
       @change="onChange"
     >
       <option
@@ -27,8 +27,22 @@ export default {
     'data',
     'options',
     'placeholder',
+    'disablePlaceholder',
   ],
   computed: {
+    selectValue() {
+      const {
+        data,
+        placeholder,
+      } = this
+
+      if(data) {
+        return data
+      } else if(placeholder) {
+        return placeholderValue
+      }
+      return undefined
+    },
     selectOptions() {
       const {
         options,
@@ -39,10 +53,10 @@ export default {
       const selectOptions = options.map(this.formatOption)
 
       if(placeholder) {
-        const placeholder = this.formatOption(placeholder)
+        const placeholderOption = this.formatOption(placeholder)
 
         selectOptions.unshift({
-          ...placeholder,
+          ...placeholderOption,
           disabled: disablePlaceholder,
           value: placeholderValue,
         })

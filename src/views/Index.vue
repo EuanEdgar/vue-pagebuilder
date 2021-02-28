@@ -57,7 +57,7 @@ export default {
       this.path = path
     },
     addElement() {
-      this.$refs.editor.addComponent('Text')
+      this.$refs.editor.addComponent('Header')
     },
   },
   components: {
