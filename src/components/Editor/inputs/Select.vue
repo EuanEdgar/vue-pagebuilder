@@ -1,20 +1,17 @@
 <template>
-  <div>
-    <h2>{{ _key }}</h2>
-    <select
-      :value="selectValue"
-      @change="onChange"
+  <select
+    :value="selectValue"
+    @change="onChange"
+  >
+    <option
+      v-for="option in selectOptions"
+      :key="option.value"
+      :value="option.value"
+      :disabled="option.disabled"
     >
-      <option
-        v-for="option in selectOptions"
-        :key="option.value"
-        :value="option.value"
-        :disabled="option.disabled"
-      >
-        {{ option.text }}
-      </option>
-    </select>
-  </div>
+      {{ option.text }}
+    </option>
+  </select>
 </template>
 
 <script lang="js">
@@ -22,6 +19,7 @@ const placeholderValue = '__PLACEHOLDER__'
 
 export default {
   name: 'Select',
+  wrapInput: true,
   props: [
     '_key',
     'data',

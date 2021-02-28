@@ -10,9 +10,7 @@ export default [
       {
         type: 'text',
         key: 'second value',
-        inputOptions: {
-          header: 'Second val :)'
-        },
+        name: 'Second val :)'
       },
     ],
     // TODO

@@ -1,19 +1,29 @@
 import Vue from 'vue'
 
+import InputWrapper from './InputWrapper'
 import Select from './Select'
 import Text from './Text'
 
-const createComponent = (component) => {
+const createComponent = (componentDefinition) => {
   const {
     name,
     initialValue,
+    wrapInput,
     ...vueComponent
-  } = component
+  } = componentDefinition
 
-  Vue.component(name, vueComponent)
+  let component;
+  if(wrapInput) {
+    const internalComponent = Vue.component(`Wrapped${name}`, vueComponent)
+
+    component = Vue.component(name, InputWrapper(internalComponent))
+  } else {
+    component = Vue.component(name, vueComponent)
+  }
 
   return {
     name,
+    usesWrapper: !!wrapInput,
     component,
     initialValue,
   }

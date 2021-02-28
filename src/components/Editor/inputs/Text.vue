@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <h2>{{ _key }}</h2>
-    <textarea :value="data" @change="onChange" />
-  </div>
+  <textarea :value="data" @change="onChange" />
 </template>
 
 <script lang="js">
 export default {
   name: 'TextInput',
+  wrapInput: true,
   initialValue: '',
   props: ['_key', 'data'],
   methods: {

@@ -17,16 +17,27 @@ export default {
 
     const inputDefinition = input.type;
 
+    let componentProps = {
+      _key: input.key,
+      name: input.name,
+      component,
+      componentData,
+      data,
+    }
+
+    if(inputDefinition.usesWrapper) {
+      componentProps.inputOptions = input.inputOptions
+    } else {
+      componentProps = {
+        ...componentProps,
+        ...input.inputOptions
+      }
+    }
+
     return h(
       inputDefinition.component,
       {
-        props: {
-          ...input.inputOptions,
-          _key: input.key,
-          component,
-          componentData,
-          data,
-        },
+        props: componentProps,
         on: {
           change: (value) => {
             listeners.change({
